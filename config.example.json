@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "enabled": true,
+  "cdpUrl": "http://127.0.0.1:18801",
+  "defaultTier": "interact",
+  "domainsJson": "[\n  {\n    \"match\": \"*.icbc.com.cn\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.ccb.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.boc.cn\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.abchina.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.bankcomm.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.cmbchina.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.alipay.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"pay.weixin.qq.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.unionpay.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.95516.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.gov.cn\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.chinatax.gov.cn\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.zhipin.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.zhaopin.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.51job.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.liepin.com\",\n    \"tier\": \"read\"\n  },\n  {\n    \"match\": \"*.lagou.com\",\n    \"tier\": \"read\"\n  }\n]",
+  "confirmations": [
+    "submit",
+    "publish",
+    "purchase",
+    "delete",
+    "send",
+    "transfer"
+  ],
+  "credentialRulesJson": "[]",
+  "maxSnapshotChars": 4000,
+  "actionTimeoutMs": 30000,
+  "recordText": false
+}

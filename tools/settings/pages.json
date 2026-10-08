@@ -1,0 +1,87 @@
+{
+  "dsh-browser-tools": {
+    "rowId": "browser-tools",
+    "endpoint": "browserTools",
+    "standalone": true,
+    "title": "浏览器工具",
+    "description": "连接已启动的浏览器，通过结构快照、引用、原生审批与截图完成网页操作。",
+    "fields": [
+      {
+        "key": "enabled",
+        "label": "启用浏览器工具",
+        "type": "boolean"
+      },
+      {
+        "key": "cdpUrl",
+        "label": "浏览器调试地址",
+        "group": "连接",
+        "type": "text",
+        "help": "连接本机已启动的浏览器，默认端口 18801。启动方法见插件使用说明。"
+      },
+      {
+        "key": "defaultTier",
+        "label": "未匹配站点的权限",
+        "group": "站点与审批",
+        "type": "select",
+        "options": [
+          [
+            "interact",
+            "允许交互"
+          ],
+          [
+            "read",
+            "只读"
+          ],
+          [
+            "blocked",
+            "禁止访问"
+          ]
+        ]
+      },
+      {
+        "key": "domainsJson",
+        "label": "站点规则",
+        "group": "站点与审批",
+        "type": "multiline",
+        "help": "JSON 数组；match 是域名或带路径的通配规则，tier 为 read / interact / blocked。*.example.com 同时匹配根域名。"
+      },
+      {
+        "key": "confirmations",
+        "label": "需要原生人工审批的动作",
+        "group": "站点与审批",
+        "type": "list",
+        "help": "每行一个：submit、publish、purchase、delete、send、transfer。审批只授权当前动作一次，确认文字不能代替原生审批。"
+      },
+      {
+        "key": "credentialRulesJson",
+        "label": "浏览器凭据使用范围",
+        "group": "站点与审批",
+        "type": "multiline",
+        "help": "默认 []，不允许读取凭据。示例 [{\"ref\":\"browser.site-password\",\"match\":\"example.com\"}]；在原生凭据设置保存秘密，这里只填引用及允许站点。"
+      },
+      {
+        "key": "maxSnapshotChars",
+        "label": "快照字符上限",
+        "group": "性能与记录",
+        "type": "number",
+        "min": 1000,
+        "max": 65536
+      },
+      {
+        "key": "actionTimeoutMs",
+        "label": "单次动作时间上限（毫秒）",
+        "group": "性能与记录",
+        "type": "number",
+        "min": 1000,
+        "max": 120000
+      },
+      {
+        "key": "recordText",
+        "label": "在浏览器审计中记录普通输入正文",
+        "group": "性能与记录",
+        "type": "boolean",
+        "help": "默认关闭，secret 始终不记正文。普通 text 参数仍会由 DSH 原生会话日志记录；密码使用文件或已授权凭据引用。"
+      }
+    ]
+  }
+}

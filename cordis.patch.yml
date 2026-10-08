@@ -1,0 +1,4 @@
+- select: '~'
+  insert:
+    - id: browser-tools
+      name: dsh-browser-tools
