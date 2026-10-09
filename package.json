@@ -19,6 +19,8 @@
     "cordis.patch.yml",
     "config.example.json",
     "README.md",
+    "README.zh-CN.md",
+    "SECURITY.md",
     "SKILL.md",
     "config.js",
     "client.js"
