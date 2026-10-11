@@ -46,3 +46,7 @@ Run `npm test` for portable policy tests. Live browser/CDP behavior requires an 
 Related: [Desktop Tools](https://github.com/Kerberos255/dsh-desktop-tools) for Windows native applications · [Web Search Router](https://github.com/Kerberos255/dsh-web-search-router) for search-provider routing.
 
 MIT licensed. See [LICENSE](LICENSE).
+
+## Optional plugin diagnostics
+
+The plugin optionally emits privacy-restricted operation and failure metadata to dsh-plugin-diagnostics. Diagnostics contain event type, status, fixed error code and elapsed time; conversation content and credentials are not logged. The diagnostics plugin is optional and does not change the host requirements.

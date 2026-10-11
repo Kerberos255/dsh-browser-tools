@@ -32,6 +32,7 @@ export default class BrowserTools extends PluginConfig{
  static inject=['dshHomePath','tools'];
  constructor(ctx,legacy={}){
   super(ctx,{service:'browserTools',packageName:'dsh-browser-tools',schema,details:()=>({connected:!!this.connection?.browser?.isConnected(),sessions:this.connection?.states.size??0,message:this.error||(this.connection?.browser?.isConnected()?'浏览器已连接 · '+this.connection.states.size+' 个会话':'按需连接；首次使用前请手动启动 CloakBrowser。')})},legacy);
+  ctx.inject(['pluginDiagnostics'],scope=>{const diag=scope.get('pluginDiagnostics');diag.start('dsh-browser-tools');scope.effect(()=>()=>diag.stop('dsh-browser-tools'));});
   this.context=ctx;this.closed=false;this.tasks=new Set();this.agents=new WeakSet();this.resetting=Promise.resolve();
   this.artifacts=new Artifacts(ctx.dshHomePath('dsh-browser-tools','runs'));this.connection=new Connection(()=>this.configFile.value,{artifactsDir:()=>this.artifacts.directory({run:'connection-artifacts'})});
   this.actions=new Actions(this.connection,this.artifacts,{approve:request=>ctx.get('approval')?.request(request)??Promise.resolve('unavailable'),credential:async(ref,signal)=>{const value=await ctx.get('credentials')?.resolve(ref);signal.throwIfAborted();return value?.value;},readOnly:state=>ctx.get('permissionPresets')?.current(state.exec.agent.session)==='read-only'});
