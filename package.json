@@ -1,6 +1,6 @@
 {
   "name": "dsh-browser-tools",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "description": "连接已启动的浏览器，通过结构快照、引用、原生审批与截图完成网页操作。",
   "license": "MIT",
@@ -29,15 +29,15 @@
     "playwright-core": "1.63.0"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "4.0.4 || 4.0.5-alpha.1",
-    "@deepseek-ai/dsh-tools": "0.2.0-rc.2 || 0.2.1-alpha.1",
-    "@deepseek-ai/dsh-llm": "0.2.0-rc.2 || 0.2.1-alpha.1",
-    "@deepseek-ai/dsh-user-approval": "0.2.0-rc.2 || 0.2.1-alpha.1",
-    "@deepseek-ai/dsh-tool-call-timeout-policy": "0.2.0-rc.2 || 0.2.1-alpha.1",
-    "@deepseek-ai/dsh-typert-protocol": "0.2.0-rc.2 || 0.2.1-alpha.1",
-    "@deepseek-ai/dsh-client-connection": "0.2.0-rc.2 || 0.2.1-alpha.1",
-    "@deepseek-ai/dsh-client-ui-plugin-manager": "0.2.0-rc.2 || 0.2.1-alpha.1",
-    "@deepseek-ai/dsh-client-ui-primitives": "0.2.0-rc.2 || 0.2.1-alpha.1"
+    "@deepseek-ai/cordis": "4.0.4 || 4.0.5-alpha.1 || 4.0.5",
+    "@deepseek-ai/dsh-tools": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
+    "@deepseek-ai/dsh-llm": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
+    "@deepseek-ai/dsh-user-approval": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
+    "@deepseek-ai/dsh-tool-call-timeout-policy": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
+    "@deepseek-ai/dsh-typert-protocol": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
+    "@deepseek-ai/dsh-client-connection": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
+    "@deepseek-ai/dsh-client-ui-plugin-manager": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
+    "@deepseek-ai/dsh-client-ui-primitives": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1"
   },
   "dsh": {
     "bundle": {
@@ -57,9 +57,14 @@
     "deepseek-harness"
   ],
   "engines": {
-    "node": ">=24"
+    "node": ">=24",
+    "dsh": ">=0.2.0-rc.2"
   },
   "scripts": {
     "test": "node --test tests/policy.test.mjs"
+  },
+  "dshCompatibility": {
+    "testedRuntime": "0.2.1-rc.2",
+    "policy": "warn"
   }
 }
