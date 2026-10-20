@@ -31,7 +31,12 @@ export function validate(name,args){
 export default class BrowserTools extends PluginConfig{
  static inject=['dshHomePath','tools'];
  constructor(ctx,legacy={}){
-  super(ctx,{service:'browserTools',packageName:'dsh-browser-tools',schema,details:()=>({connected:!!this.connection?.browser?.isConnected(),sessions:this.connection?.states.size??0,message:this.error||(this.connection?.browser?.isConnected()?'浏览器已连接 · '+this.connection.states.size+' 个会话':'按需连接；首次使用前请手动启动 CloakBrowser。')})},legacy);
+  super(ctx,{service:'browserTools',packageName:'dsh-browser-tools',schema,details:()=>{
+   const config=this.configFile.value,connection=this.connection,minutes=Number(config.idleExitMinutes??30);
+   const idle=config.launch&&minutes>0?('；闲置 '+minutes+' 分钟退出'):'';
+   const idleMessage=config.launch?(connection?.launchOwned?'自动启动的浏览器':'按需连接；未启动时自动启动 CloakBrowser'+idle):'按需连接；首次使用前请手动启动 CloakBrowser。';
+   return {connected:!!connection?.browser?.isConnected(),sessions:connection?.states.size??0,launchOwned:!!connection?.launchOwned,message:this.error||(connection?.browser?.isConnected()?'浏览器已连接 · '+connection.states.size+' 个会话':idleMessage)};
+  }},legacy);
   ctx.inject(['pluginDiagnostics'],scope=>{const diag=scope.get('pluginDiagnostics');diag.start('dsh-browser-tools');scope.effect(()=>()=>diag.stop('dsh-browser-tools'));});
   this.context=ctx;this.closed=false;this.tasks=new Set();this.agents=new WeakSet();this.resetting=Promise.resolve();
   this.artifacts=new Artifacts(ctx.dshHomePath('dsh-browser-tools','runs'));this.connection=new Connection(()=>this.configFile.value,{artifactsDir:()=>this.artifacts.directory({run:'connection-artifacts'})});

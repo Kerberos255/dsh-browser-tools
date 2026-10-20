@@ -13,6 +13,6 @@ description: 使用 DSH 原生浏览器工具操作已启动的浏览器，结�
 5. 发布、提交、购买、删除、发送、转账由 DSH 原生审批。没有授权就停下；文字说明或确认字符串不能代替授权。
 6. 普通 text 参数会进入原生会话日志。密码使用 secret + 站点授权的 credentialRef，或用户准备在本会话产物目录的 fromFile；不把秘密放进 text。
 7. 结构信息不足、要检查遮挡或视觉状态时才截图。用 read_image 查看文件，或 present 展示给用户。
-8. browser-unavailable：提醒用户手动启动 CloakBrowser，完整启动命令见浏览器插件 README。工具不会启动浏览器。
+8. browser-unavailable：插件开启「自动启动浏览器」时会先自动拉起并等待就绪（已有实例直接复用）；若仍报错，把错误里的原因（缺路径、启动退出、超时）转告用户。未开启自动启动时，提醒用户手动启动 CloakBrowser，命令见浏览器插件 README。
 9. ref-not-found：重新 snapshot。timeout / action-failed：先看当前网页确认是否已经完成，避免重复提交。
 10. fromFile 只读返回的 runDirectory 内的单个文件名。浏览器工具不提供任意脚本、上传下载或剪贴板。

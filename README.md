@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md) · [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) · [Security](SECURITY.md)
 
-Connect a **running Chromium browser** to a DSH agent through Chrome DevTools Protocol (CDP). Navigate, inspect accessible page snapshots, click, type, and capture screenshots without launching or downloading a browser.
+Connect a **running Chromium browser** to a DSH agent through Chrome DevTools Protocol (CDP). Navigate, inspect accessible page snapshots, click, type, and capture screenshots. The plugin never downloads a browser; by default it only connects, and an optional setting can launch a configured local browser on demand.
 
 ## What it does
 
@@ -34,6 +34,15 @@ Example browser arguments (substitute your browser executable and profile direct
 ```text
 --remote-debugging-address=127.0.0.1 --remote-debugging-port=18801 --user-data-dir=<browser-profile>
 ```
+
+### Optional: launch the browser on demand
+
+With "launch browser on demand" enabled, the first tool call that cannot reach the CDP endpoint starts the configured executable and waits until it is ready:
+
+- Set the browser executable path and the profile directory (`--user-data-dir`); extra arguments are a JSON string array.
+- An instance that is already listening is reused — the plugin only launches when the endpoint is absent, so manually started browsers and parallel sessions are never disturbed.
+- "Exit when idle (minutes)" defaults to **30** and closes the instance this plugin started after that much inactivity; `0` disables it. Instances the plugin did not start are never closed.
+- Because the browser is spawned by DSH, it ends when DSH exits.
 
 ## Safety and data
 

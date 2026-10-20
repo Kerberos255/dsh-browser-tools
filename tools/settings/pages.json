@@ -19,6 +19,51 @@
         "help": "连接本机已启动的浏览器，默认端口 18801。启动方法见插件使用说明。"
       },
       {
+        "key": "launch",
+        "label": "自动启动浏览器",
+        "group": "连接",
+        "type": "boolean",
+        "help": "仅在检测不到已启动的实例时拉起；已有实例直接复用。自动启动的实例会随 DSH 退出而结束。"
+      },
+      {
+        "key": "launchExecutablePath",
+        "label": "浏览器可执行文件路径",
+        "group": "连接",
+        "type": "text",
+        "help": "自动启动时使用的 chrome.exe（或同构浏览器）完整路径。"
+      },
+      {
+        "key": "launchUserDataDir",
+        "label": "浏览器配置目录",
+        "group": "连接",
+        "type": "text",
+        "help": "自动启动时作为 --user-data-dir 的目录（决定登录状态）；留空则用浏览器默认配置。"
+      },
+      {
+        "key": "launchArgsJson",
+        "label": "附加启动参数",
+        "group": "连接",
+        "type": "multiline",
+        "help": "JSON 字符串数组，默认 []。例如 [\"--lang=zh-CN\"]。程序会自动追加 --remote-debugging-*、--no-first-run、--no-default-browser-check。"
+      },
+      {
+        "key": "launchTimeoutMs",
+        "label": "启动等待上限（毫秒）",
+        "group": "连接",
+        "type": "number",
+        "min": 2000,
+        "max": 120000
+      },
+      {
+        "key": "idleExitMinutes",
+        "label": "闲置退出（分钟）",
+        "group": "连接",
+        "type": "number",
+        "min": 0,
+        "max": 1440,
+        "help": "连续无操作达到该时长后关闭浏览器；0 表示不自动退出。仅对自动启动的实例生效，手动启动的实例不受影响。"
+      },
+      {
         "key": "defaultTier",
         "label": "未匹配站点的权限",
         "group": "站点与审批",

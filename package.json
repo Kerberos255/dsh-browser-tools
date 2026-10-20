@@ -1,6 +1,6 @@
 {
   "name": "dsh-browser-tools",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "type": "module",
   "description": "连接已启动的浏览器，通过结构快照、引用、原生审批与截图完成网页操作。",
   "license": "MIT",
@@ -34,10 +34,10 @@
     "@deepseek-ai/dsh-llm": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
     "@deepseek-ai/dsh-user-approval": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
     "@deepseek-ai/dsh-tool-call-timeout-policy": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
-    "@deepseek-ai/dsh-typert-protocol": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
-    "@deepseek-ai/dsh-client-connection": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
-    "@deepseek-ai/dsh-client-ui-plugin-manager": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1",
-    "@deepseek-ai/dsh-client-ui-primitives": "0.2.0-rc.2 || 0.2.1-rc.2 || 0.2.1-alpha.1 || >=0.2.1"
+    "@deepseek-ai/dsh-typert-protocol": "0.2.0-rc.2 || 0.2.1-alpha.1",
+    "@deepseek-ai/dsh-client-connection": "0.2.0-rc.2 || 0.2.1-alpha.1",
+    "@deepseek-ai/dsh-client-ui-plugin-manager": "0.2.0-rc.2 || 0.2.1-alpha.1",
+    "@deepseek-ai/dsh-client-ui-primitives": "0.2.0-rc.2 || 0.2.1-alpha.1"
   },
   "dsh": {
     "bundle": {
@@ -61,7 +61,7 @@
     "dsh": ">=0.2.0-rc.2"
   },
   "scripts": {
-    "test": "node --test tests/policy.test.mjs"
+    "test": "node --test tests/policy.test.mjs tests/launch.test.mjs"
   },
   "dshCompatibility": {
     "testedRuntime": "0.2.1-rc.2",
